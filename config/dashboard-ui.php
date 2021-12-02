@@ -91,17 +91,19 @@ return [
     | Available themes to use
     |--------------------------------------------------------------------------
     |
-    | Each theme contains its configs
-    |
-    */
-
-    'themes' => [
+    | Each theme contains its configs,
+    | the following template should be applied in your code
         'example' => [
-            'views_path' => 'vendor/laravel-dashboard-kit/example/resources/views',
+            'views_path' => 'vendor/{vendor-name}/example/resources/views',
             'layouts' => [
                 'full'
             ]
         ]
+    |
+    */
+
+    'themes' => [
+        //
     ],
 
     /*
