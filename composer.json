@@ -9,7 +9,7 @@
     }
   ],
   "require": {
-    "laravel-dashboard-kit/dashboard-abstract": "^1.0.1"
+    "laravel-dashboard-kit/dashboard-abstract": "^1.0"
   },
   "require-dev": {
     "orchestra/testbench": "^6.0",

@@ -5,6 +5,7 @@ namespace LDK\DashboardUI\Providers\Concerns;
 use Illuminate\View\Compilers\BladeCompiler;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\File;
 
 trait WithComponentsBooted
 {
@@ -15,6 +16,10 @@ trait WithComponentsBooted
     {
         $theme = config('dashboard-ui.default.theme');
         $theme_views_path = base_path(config(sprintf("dashboard-ui.themes.%s.views_path", $theme)));
+
+        if (!File::exists($theme_views_path)) {
+            return;
+        }
 
         $this->loadViewsFrom(
             $theme_views_path,
