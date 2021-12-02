@@ -1,0 +1,50 @@
+{
+  "name": "laravel-dashboard-kit/dashboard-ui",
+  "description": "Dashboard UI package for Laravel Dashboard Kit",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Amr Khaled",
+      "email": "i@akhaled.com"
+    }
+  ],
+  "require": {
+    "laravel-dashboard-kit/dashboard-abstract": "^1.0"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^6.0",
+    "orchestra/canvas": "^6.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "LDK\\DashboardUI\\": "src",
+      "LDK\\DashboardUI\\Database\\Factories\\": "database/factories",
+      "LDK\\DashboardUI\\Database\\Seeders\\": "database/seeders/"
+    },
+    "files": [
+      "./src/helpers.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "LDK\\DashboardUI\\Providers\\DashboardUIServiceProvider"
+      ]
+    }
+  },
+  "scripts": {
+    "test": "./vendor/bin/phpunit --testdox",
+    "test-f": "./vendor/bin/phpunit --testdox --filter",
+    "post-autoload-dump": [
+      "@php ./vendor/bin/testbench package:discover --ansi"
+    ]
+  },
+  "repositories": [
+
+  ]
+}

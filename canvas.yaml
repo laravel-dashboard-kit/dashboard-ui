@@ -1,0 +1,27 @@
+preset: package
+
+namespace: LDK\DashboardUI
+user-auth-provider: App\User
+
+paths:
+  src: src
+  resource: resources
+
+factory:
+  path: database/factories
+
+migration:
+  path: database/migrations
+  prefix: ''
+
+console:
+  namespace: LDK\DashboardUI\Console
+
+model:
+  namespace: LDK\DashboardUI
+
+provider:
+  namespace: LDK\DashboardUI\Providers
+
+testing:
+  namespace: LDK\DashboardUI\Tests
