@@ -17,10 +17,6 @@ trait WithComponentsBooted
         $theme = config('dashboard-ui.default.theme');
         $theme_views_path = base_path(config(sprintf("dashboard-ui.themes.%s.views_path", $theme)));
 
-        if (!File::exists($theme_views_path)) {
-            return;
-        }
-
         $this->loadViewsFrom(
             $theme_views_path,
             'dashboard-ui'
@@ -95,6 +91,10 @@ trait WithComponentsBooted
 
     private function readPhpFilesByPath(string $base_dir)
     {
+        if (!File::exists($base_dir)) {
+            return;
+        }
+
         $scanned = collect(scandir($base_dir));
         $scanned->forget([0, 1]); // remove . & ..
         $files = collect();
