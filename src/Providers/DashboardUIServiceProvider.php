@@ -41,7 +41,7 @@ class DashboardUIServiceProvider extends ServiceProvider
         ];
 
         foreach (config('dashboard-ui.themes') as $name => $theme) {
-            $assets[base_path($theme['assets_dir'])] = [public_path("assets/dashboard/${name}")];
+            $assets[base_path($theme['assets_dir'])] = public_path("assets/dashboard/${name}");
         }
 
         $this->publishes($assets, 'dashboard-ui');
