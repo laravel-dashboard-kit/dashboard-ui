@@ -92,7 +92,7 @@ trait WithComponentsBooted
     private function readPhpFilesByPath(string $base_dir)
     {
         if (!File::exists($base_dir)) {
-            return;
+            return collect();
         }
 
         $scanned = collect(scandir($base_dir));
