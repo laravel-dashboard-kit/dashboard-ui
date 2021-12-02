@@ -36,10 +36,15 @@ class DashboardUIServiceProvider extends ServiceProvider
 
     protected function configurePublishing()
     {
-        $this->publishes([
+        $assets = [
             base_path('vendor/laravel-dashboard-kit/dashboard-abstract/public/assets') => public_path('assets/dashboard/abstract'),
-            base_path('vendor/laravel-dashboard-kit/example/public/assets') => public_path('assets/dashboard/example'),
-        ], 'dashboard-ui');
+        ];
+
+        foreach (config('dashboard-ui.themes') as $name => $theme) {
+            $assets[base_path($theme['assets_dir'])] = [public_path("assets/dashboard/${name}")];
+        }
+
+        $this->publishes($assets, 'dashboard-ui');
     }
 
     protected function bindVendorViews(string $theme_views_path)
@@ -62,15 +67,15 @@ class DashboardUIServiceProvider extends ServiceProvider
 
     protected function registerServices()
     {
-        $this->app->bind('dashboard-ui', function() {
+        $this->app->bind('dashboard-ui', function () {
             return new DashboardUI;
         });
 
-        $this->app->bind('dashboard-nav', function() {
+        $this->app->bind('dashboard-nav', function () {
             return new Nav;
         });
 
-        $this->app->bind('dashboard-side-menu', function() {
+        $this->app->bind('dashboard-side-menu', function () {
             return new SideMenu;
         });
     }

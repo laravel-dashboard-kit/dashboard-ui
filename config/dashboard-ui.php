@@ -95,6 +95,7 @@ return [
     | the following template should be applied in your code
         'example' => [
             'views_path' => 'vendor/{vendor-name}/example/resources/views',
+            'assets_dir' => 'vendor/{vendor-name}/example/public/assets',
             'layouts' => [
                 'full'
             ]
