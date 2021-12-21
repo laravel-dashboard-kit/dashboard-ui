@@ -8,7 +8,9 @@ return [
     'logo' => [
         'default' => '/assets/dashboard/logo.png',
         'small' => '/assets/dashboard/logo.png',
+        'favicon' => '/assets/dashboard/logo.png',
     ],
+    'guard' => 'web',
 
     /*
     |--------------------------------------------------------------------------
