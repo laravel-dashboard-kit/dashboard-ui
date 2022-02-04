@@ -2,10 +2,11 @@
 
 namespace LDK\DashboardUI\Providers\Concerns;
 
-use Illuminate\View\Compilers\BladeCompiler;
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Blade;
+use LDK\DashboardUI\Views\Components;
+use Illuminate\View\Compilers\BladeCompiler;
 
 trait WithComponentsBooted
 {
@@ -23,6 +24,8 @@ trait WithComponentsBooted
         );
 
         $this->configureMainLayoutsAndComponents($theme_views_path);
+
+        Blade::componentNamespace(Components::class, "dashboard");
     }
 
     protected function configureMainLayoutsAndComponents(string $theme_views_path)

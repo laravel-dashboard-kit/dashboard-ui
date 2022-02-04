@@ -3,9 +3,9 @@
 namespace LDK\DashboardUI\Providers;
 
 use LDK\DashboardUI\Services\Nav;
-use LDK\DashboardUI\Services\DashboardUI;
 use LDK\DashboardUI\Services\SideMenu;
 use Illuminate\Support\ServiceProvider;
+use LDK\DashboardUI\Services\DashboardUI;
 use LDK\DashboardUI\Providers\Concerns\WithComponentsBooted;
 
 class DashboardUIServiceProvider extends ServiceProvider
