@@ -2,16 +2,25 @@
 
 namespace LDK\DashboardUI\Views\Components;
 
-use LDK\DashboardAbstract\Views\Components\Component;
-
 class Badge extends Component
 {
+    /**
+     * Badge color, should be available in your theme
+     *
+     * @var string
+     */
     public $color;
+
+    /**
+     * Badge has round edges
+     *
+     * @var string
+     */
     public $pill;
 
     public function __construct(string $color = 'primary', $pill = false)
     {
-        parent::__construct();
+        $this->validateColor($color);
 
         $this->color = $color;
         $this->pill = boolval($pill);
@@ -20,10 +29,5 @@ class Badge extends Component
             "badge badge-{$this->color}",
             'badge-pill' => $this->pill
         ]);
-    }
-
-    public function render()
-    {
-        return view('dashboard-ui::components.badge');
     }
 }
