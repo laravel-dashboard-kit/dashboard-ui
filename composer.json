@@ -2,6 +2,7 @@
   "name": "laravel-dashboard-kit/dashboard-ui",
   "description": "Dashboard UI package for Laravel Dashboard Kit",
   "type": "library",
+  "license": "MIT",
   "authors": [
     {
       "name": "Amr Khaled",

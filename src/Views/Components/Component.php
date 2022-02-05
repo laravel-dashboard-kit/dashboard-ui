@@ -2,22 +2,23 @@
 
 namespace LDK\DashboardUI\Views\Components;
 
-use ReflectionClass;
 use Illuminate\Support\Facades\View;
-use LDK\DashboardAbstract\Views\Components\Component as BaseComponent;
+use LDK\DashboardUI\Views\Components;
 use LDK\DashboardUI\Exceptions\ColorNotSupported;
+use LDK\DashboardAbstract\Views\Components\Component as BaseComponent;
 
 class Component extends BaseComponent {
 
     public function render()
     {
-        $componentName = strtolower((new ReflectionClass(get_called_class()))->getShortName());
+        // ex: .buttons.confirm
+        $componentName = strtolower(str_replace([Components::class, '\\'], ['','.'], static::class));
 
-        if (View::exists("dashboard-ui::component.${componentName}")) {
-            return view("dashboard-ui::components.${componentName}");
+        if (View::exists("dashboard-ui::components${componentName}")) {
+            return view("dashboard-ui::components${componentName}");
         }
 
-        return view("dashboard-abstract::components.${componentName}");
+        return view("dashboard-abstract::components${componentName}");
     }
 
     protected function validateColor(string $color)
