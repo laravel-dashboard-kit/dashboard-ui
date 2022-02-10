@@ -2,10 +2,13 @@
 
 namespace LDK\DashboardUI\Providers;
 
+
 use LDK\DashboardUI\Services\Nav;
+use Illuminate\Support\Facades\Blade;
 use LDK\DashboardUI\Services\SideMenu;
 use Illuminate\Support\ServiceProvider;
 use LDK\DashboardUI\Services\DashboardUI;
+use LDK\DashboardUI\Services\NotifyService;
 use LDK\DashboardUI\Providers\Concerns\WithComponentsBooted;
 
 class DashboardUIServiceProvider extends ServiceProvider
@@ -14,6 +17,13 @@ class DashboardUIServiceProvider extends ServiceProvider
 
     public function register()
     {
+        config(['blade-icons.attributes' => [
+            'width' => 24,
+            'height' => 24,
+        ]]);
+
+        $this->mergeConfigFrom(__DIR__ . '/../../config/livewire-datatables.php', 'livewire-datatables');
+        $this->mergeConfigFrom(__DIR__.'/../../config/blade-javascript.php', 'blade-javascript');
         $this->mergeConfigFrom(__DIR__ . '/../../config/dashboard-ui.php', 'dashboard-ui');
 
         $theme = config('dashboard-ui.default.theme');
@@ -30,6 +40,16 @@ class DashboardUIServiceProvider extends ServiceProvider
         }
 
         $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
+        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'dashboard-abstract');
+        $this->loadTranslationsFrom(__DIR__ .'/../../resources/lang', 'dashboard');
+
+        Blade::directive('attributes', function ($attributes) {
+            return "<?php echo implode(' ', array_map("
+                . "function (\$v, \$k) { return sprintf(\"%s='%s'\", \$k, \$v); },"
+                . "$attributes,"
+                . "array_keys($attributes)"
+            . ")); ?>";
+        });
 
         $this->bootstrapComponentsAndLayouts();
     }
@@ -37,7 +57,7 @@ class DashboardUIServiceProvider extends ServiceProvider
     protected function configurePublishing()
     {
         $assets = [
-            base_path('vendor/laravel-dashboard-kit/dashboard-abstract/public/assets') => public_path('assets/dashboard/abstract'),
+            __DIR__ . '/../../public/assets' => public_path('assets/dashboard/abstract'),
         ];
 
         foreach (config('dashboard-ui.themes') as $name => $theme) {
@@ -77,6 +97,10 @@ class DashboardUIServiceProvider extends ServiceProvider
 
         $this->app->bind('dashboard-side-menu', function () {
             return new SideMenu;
+        });
+
+        $this->app->bind('LDKNotify', function () {
+            return new NotifyService;
         });
     }
 }

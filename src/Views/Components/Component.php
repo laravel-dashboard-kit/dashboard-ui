@@ -2,12 +2,25 @@
 
 namespace LDK\DashboardUI\Views\Components;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\View;
 use LDK\DashboardUI\Views\Components;
+use Illuminate\View\Component as BaseComponent;
 use LDK\DashboardUI\Exceptions\ColorNotSupported;
-use LDK\DashboardAbstract\Views\Components\Component as BaseComponent;
 
-class Component extends BaseComponent {
+class Component extends BaseComponent
+{
+    public $class;
+    public $defaultAttributes = [];
+
+    public function class(array $classes = [])
+    {
+        $this->class = Arr::toCssClasses($classes);
+
+        $this->defaultAttributes['class'] = $this->class;
+
+        return $this;
+    }
 
     public function render()
     {
