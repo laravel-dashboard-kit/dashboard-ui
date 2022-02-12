@@ -14,6 +14,13 @@ class Confirm extends Component
     public $id;
 
     /**
+     * Button color
+     *
+     * @var string
+     */
+    public $color;
+
+    /**
      * Swal options
      *
      * @see https://sweetalert2.github.io/#configuration
@@ -21,13 +28,14 @@ class Confirm extends Component
      */
     public $options;
 
-    public function __construct(string $id = null, array $options = [])
+    public function __construct(string $id = null, string $color = 'danger', array $options = [])
     {
         if (!$id) {
             $id = uniqid('confirm');
         }
 
         $this->id = $id;
+        $this->color = $color;
         $this->options = $options;
     }
 }

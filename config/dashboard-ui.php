@@ -125,6 +125,7 @@ return [
         'danger',
         'warning',
         'info',
+        'default',
         'light',
         'dark',
     ],
