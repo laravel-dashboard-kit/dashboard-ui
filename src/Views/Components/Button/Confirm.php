@@ -30,6 +30,8 @@ class Confirm extends Component
 
     public function __construct(string $id = null, string $color = 'danger', array $options = [])
     {
+        $this->validateColor($color);
+
         if (!$id) {
             $id = uniqid('confirm');
         }
