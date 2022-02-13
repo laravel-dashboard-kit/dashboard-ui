@@ -8,7 +8,7 @@ use LDK\DashboardUI\Views\Components;
 use Illuminate\View\Component as BaseComponent;
 use LDK\DashboardUI\Exceptions\ColorNotSupported;
 
-class Component extends BaseComponent
+abstract class Component extends BaseComponent
 {
     public $class;
     public $defaultAttributes = [];
