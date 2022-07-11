@@ -2,19 +2,19 @@
     <a {{ $attributes->merge($defaultAttributes)->merge([
         'href' => '#',
     ]) }}>
-        <x-dashboard-flex class="gap-1"
+        <x-dashboard::flex class="gap-1"
             x="center">
             {!! $slot ?? __('Click') !!}
-        </x-dashboard-flex>
+        </x-dashboard::flex>
     </a>
 @else
     <button {{ $attributes->merge($defaultAttributes)->merge([
         'type' => 'button',
     ]) }}>
-        <x-dashboard-flex class="gap-1"
+        <x-dashboard::flex class="gap-1"
             x="center">
             {!! $slot ?? __('Click') !!}
-        </x-dashboard-flex>
+        </x-dashboard::flex>
     </button>
 @endif
 
