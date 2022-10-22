@@ -17,10 +17,10 @@ $parameters = [
 
 @foreach (array_keys($parameters) as $type)
     @if (Session::has($type))
-        <x-dashboard-alert dismissible
+        <x-dashboard::alert dismissible
             :color="$parameters[$type]['color']"
             :icon="$parameters[$type]['icon']">
             <p class="mb-0 font-weight-bolder">{!! Session::get($type) !!}</p>
-        </x-dashboard-alert>
+        </x-dashboard::alert>
     @endif
 @endforeach
