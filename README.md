@@ -85,9 +85,3 @@ Your theme should include the following structure
 - progress bar
   - `value`: value of progress bar
   - `color`
-
-## Resources
-
-- [Laravel Package](https://laravelpackage.com/)
-- [Orchestra](https://packages.tools/testbench/getting-started/introduction.html)
-- [Canvas](https://github.com/orchestral/canvas)

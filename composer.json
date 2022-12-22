@@ -1,46 +1,58 @@
 {
-  "name": "laravel-dashboard-kit/dashboard-ui",
-  "description": "Dashboard UI package for Laravel Dashboard Kit",
-  "type": "library",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Amr Khaled",
-      "email": "i@akhaled.com"
-    }
-  ],
-  "require": {
-    "illuminate/support": "^6.0|^7.0|^8.0",
-    "illuminate/view": "^6.0|^7.0|^8.0",
-    "laravel/ui": "^3.3",
-    "spatie/laravel-blade-javascript": "^2.6",
-    "livewire/livewire": "^2.5",
-    "mediconesystems/livewire-datatables": "^0.5.1",
-    "asantibanez/livewire-select": "^2.0",
-    "akhaled/livewire-sweetalert": "^0.1",
-    "blade-ui-kit/blade-icons": "^1.1",
-    "brunocfalcao/blade-feather-icons": "^2.0",
-    "ryangjchandler/blade-tabler-icons": "^1.1",
-    "andreiio/blade-remix-icon": "^1.0",
-    "codeat3/blade-eos-icons": "^1.7",
-    "codeat3/blade-carbon-icons": "^1.0",
-    "mckenziearts/laravel-notify": "^2.2"
-  },
-  "autoload": {
-    "psr-4": {
-      "LDK\\DashboardUI\\": "src",
-      "LDK\\DashboardUI\\Database\\Factories\\": "database/factories",
-      "LDK\\DashboardUI\\Database\\Seeders\\": "database/seeders/"
+    "name": "laravel-dashboard-kit/dashboard-ui",
+    "description": "Dashboard UI package for Laravel Dashboard Kit",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Amr Khaled",
+            "email": "i@akhaled.com"
+        }
+    ],
+    "require": {
+        "illuminate/support": "^6.0|^7.0|^8.0",
+        "illuminate/view": "^6.0|^7.0|^8.0",
+        "laravel/ui": "^3.3",
+        "spatie/laravel-blade-javascript": "^2.6",
+        "livewire/livewire": "^2.5",
+        "mediconesystems/livewire-datatables": "^0.5.1",
+        "asantibanez/livewire-select": "^2.0",
+        "akhaled/livewire-sweetalert": "^0.1",
+        "blade-ui-kit/blade-icons": "^1.1",
+        "brunocfalcao/blade-feather-icons": "^2.0",
+        "ryangjchandler/blade-tabler-icons": "^1.1",
+        "andreiio/blade-remix-icon": "^1.0",
+        "codeat3/blade-eos-icons": "^1.7",
+        "codeat3/blade-carbon-icons": "^1.0",
+        "mckenziearts/laravel-notify": "^2.2"
     },
-    "files": [
-      "./helpers/all.php"
+    "autoload": {
+        "psr-4": {
+            "LDK\\DashboardUI\\": "src",
+            "LDK\\DashboardUI\\Database\\Factories\\": "database/factories",
+            "LDK\\DashboardUI\\Database\\Seeders\\": "database/seeders/"
+        },
+        "files": [
+            "./helpers/all.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LDK\\DashboardUI\\Providers\\DashboardUIServiceProvider"
+            ]
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://laravel-dashboard-kit.repo.repman.akhaled.com:8000",
+            "options": {
+                "ssl": {
+                    "verify_peer": false,
+                    "allow_self_signed": true
+                }
+            }
+        }
     ]
-  },
-  "extra": {
-    "laravel": {
-      "providers": [
-        "LDK\\DashboardUI\\Providers\\DashboardUIServiceProvider"
-      ]
-    }
-  }
 }
