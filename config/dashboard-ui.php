@@ -6,9 +6,9 @@ return [
         'layout' => 'full'
     ],
     'logo' => [
-        'default' => '/assets/dashboard/logo.png',
-        'small' => '/assets/dashboard/logo.png',
-        'favicon' => '/assets/dashboard/logo.png',
+        'default' => asset('/dashboard/logo.png'),
+        'small' => asset('/dashboard/logo.png'),
+        'favicon' => asset('/dashboard/logo.png'),
     ],
     'guard' => 'web',
 

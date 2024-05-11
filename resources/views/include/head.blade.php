@@ -10,11 +10,11 @@
 
 <title>{{ dashboard_ui()->title(__($attributes->get('title', 'Dashboard'))) }}</title>
 
-<link href="{{ asset('assets/dashboard/abstract/css/dashboard.css') }}"
+<link href="{{ asset('dashboard/abstract/css/dashboard.css') }}"
     rel="stylesheet"
     type="text/css" />
 @livewireStyles
 
 <link rel="stylesheet"
     type="text/css"
-    href="{{ '/assets/dashboard/abstract/laravel-notify/css/notify.css' }}" />
+    href="{{ asset('dashboard/abstract/laravel-notify/css/notify.css') }}" />
