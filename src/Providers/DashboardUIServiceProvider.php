@@ -2,7 +2,6 @@
 
 namespace LDK\DashboardUI\Providers;
 
-
 use LDK\DashboardUI\Services\Nav;
 use Illuminate\Support\Facades\Blade;
 use LDK\DashboardUI\Services\SideMenu;

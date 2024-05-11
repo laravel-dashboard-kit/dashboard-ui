@@ -6,7 +6,6 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Blade;
 use LDK\DashboardUI\Views\Components;
-use Illuminate\View\Compilers\BladeCompiler;
 
 trait WithComponentsBooted
 {
@@ -23,30 +22,27 @@ trait WithComponentsBooted
             'dashboard-ui'
         );
 
-        $this->configureMainLayoutsAndComponents($theme_views_path);
+        $this->callAfterResolving('blade.compiler', function() use ($theme_views_path) {
+            $this->configureMainLayoutsAndComponents($theme_views_path);
+        });
 
         Blade::componentNamespace(Components::class, "dashboard");
     }
 
     protected function configureMainLayoutsAndComponents(string $theme_views_path)
     {
-        $this->callAfterResolving(
-            BladeCompiler::class,
-            function () use ($theme_views_path) {
-                Blade::component("dashboard-ui::layouts.".config('dashboard-ui.default.layout'), 'dashboard-app');
+        Blade::component("dashboard-ui::layouts.".config('dashboard-ui.default.layout'), 'dashboard-app');
 
-                $this->registerComponentsDirectory(
-                    $this->readPhpFilesByPath("${theme_views_path}/layouts"),
-                    "${theme_views_path}/layouts",
-                    self::$layoutNamespace
-                );
+        $this->registerComponentsDirectory(
+            $this->readPhpFilesByPath("${theme_views_path}/layouts"),
+            "${theme_views_path}/layouts",
+            self::$layoutNamespace
+        );
 
-                $this->registerComponentsDirectory(
-                    $this->readPhpFilesByPath("${theme_views_path}/components"),
-                    "${theme_views_path}/components",
-                    self::$componentNamespace
-                );
-            }
+        $this->registerComponentsDirectory(
+            $this->readPhpFilesByPath("${theme_views_path}/components"),
+            "${theme_views_path}/components",
+            self::$componentNamespace
         );
     }
 
